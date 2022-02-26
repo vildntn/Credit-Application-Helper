@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 public class CreditApplicationConsumer {
     @RabbitListener(queues = RabbitMQConfig.QUEUE)
     public void consumeMessageFromQueue(CreditApplication creditApplication) {
-       System.out.println("Your Credit Application Result: "+ creditApplication.getCreditStatus()+
+       System.out.println("Dear "+creditApplication.getCustomer().getFirstName()+" "+creditApplication.getCustomer().getLastName()
+               +"\nYour Credit Application Result: "+ creditApplication.getCreditStatus()+
                "\nYour Credit Limit: "+ creditApplication.getCreditLimit());
 
     }
